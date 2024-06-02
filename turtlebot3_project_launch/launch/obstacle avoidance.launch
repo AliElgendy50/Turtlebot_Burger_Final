@@ -1,0 +1,17 @@
+<launch>
+
+  <!-- Run the obstacle_avoidance_node.py script -->
+  <node pkg="turtlebot3_laptop_code" type="obstacle_avoidance_node.py" name="obstacle_avoidance_node"/>
+  
+  <!-- Run the object_detection_node.py script -->
+  <node pkg="turtlebot3_laptop_code" type="object_detection_node.py" name="object_detection_node"/>
+  
+
+  <!-- Run the rosserial_python serial_node for the Bluetooth connection -->
+  <node pkg="rosserial_python" type="serial_node.py" name="Robot_Node" args="_port:=/dev/rfcomm0 _baud:=115200"/>
+  
+  <!-- Launch rqt_image_view -->
+  <node pkg="rqt_image_view" type="rqt_image_view" name="rqt_image_view" output="screen"/>
+
+
+</launch>

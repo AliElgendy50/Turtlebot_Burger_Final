@@ -1,0 +1,35 @@
+<launch>
+
+  <!-- Set the TURTLEBOT3_MODEL environment variable -->
+  <env name="TURTLEBOT3_MODEL" value="burger"/>
+
+  <!-- Run the object_detection_node.py script -->
+  <node pkg="turtlebot3_laptop_code" type="object_detection_node.py" name="object_detection_node"/>
+  
+
+  <!-- Run the rosserial_python serial_node for the Bluetooth connection -->
+  <node pkg="rosserial_python" type="serial_node.py" name="Robot_Node" args="_port:=/dev/rfcomm1 _baud:=115200"/>
+
+
+  <!-- Launch the Gazebo simulation -->
+  <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_empty_world.launch">
+    <env name="TURTLEBOT3_MODEL" value="burger"/>
+  </include>
+  
+  <!-- Run the rotate.py script -->
+  <node pkg="turtlebot3_laptop_code" type="rotate.py" name="rotation"/>
+  
+  <!-- Run the sound_track.py script -->
+  <node pkg="turtlebot3_laptop_code" type="sound_track.py" name="sound_track"/>
+  
+  <!-- Run the visualisation.py script -->
+  <node pkg="turtlebot3_laptop_code" type="visualisation.py" name="visualisation"/>
+  
+  <!-- Run the odom_publisher.py script -->
+  <node pkg="turtlebot3_laptop_code" type="odom_publisher.py" name="odom_publisher"/>
+  
+  <!-- Launch rqt_image_view -->
+  <node pkg="rqt_image_view" type="rqt_image_view" name="rqt_image_view" output="screen"/>
+  
+
+</launch>
