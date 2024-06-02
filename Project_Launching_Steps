@@ -1,0 +1,8 @@
+The following steps should be implemented in order, 
+1) Open the GitHub Repository called: Turtlebot_Burger 
+2) Git clone the Repository and do “catkin_make” 
+3) Connect the ESP32 bluetooth to the PC.   
+4) Run the following command: sudo rfcomm bind rfcomm1 "Address of Device on Bluetooth"  
+5) Run the following command to launch the Project: 
+6) roslaunch turtlebot3_project_launch project.launch (The Launch file will launch 
+everything)
